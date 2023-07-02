@@ -1,0 +1,33 @@
+﻿@model MyFruits.Models.Fruit
+
+@{
+    ViewData.TemplateInfo.HtmlFieldPrefix = "Fruit";
+}
+
+<div class="form-group">
+    <label asp-for="Name" class="control-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Description" class="control-label"></label>
+    <input asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Image.File" class="control-label"></label>
+    @if (null != Model.Image)
+    {
+        <span>(<a target="_blank" href="@Url.Content($"~/{Model.Image.Path}")">@Model.Image.Name</a>)</span>
+    }
+    <input type="file" asp-for="Image.File" class="form-control" />
+    <span asp-validation-for="Image.File" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Price" class="control-label"></label>
+    <input asp-for="Price" class="form-control" />
+    <span asp-validation-for="Price" class="text-danger"></span>
+</div>
